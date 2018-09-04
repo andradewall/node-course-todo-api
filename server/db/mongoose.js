@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var dbuser = 'andradewall';
-var dbpassword = '@460#MngLb'
+var dbuser = 'admin';
+var dbpassword = 'admin1'
 
 mongoose.Promise = global.Promise;
 // mongoose.connect('mongodb://localhost:27017/TodoApp');
