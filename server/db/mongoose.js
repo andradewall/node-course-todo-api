@@ -9,7 +9,8 @@ let db = {
 }
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.PORT ? db.localhost : db.mlab);
+// mongoose.connect(process.env.PORT ? db.localhost : db.mlab);
+mongoose.connect(db.mlab || db.localhost);
 
 // Exporting var mongoose
 module.exports = {mongoose};
