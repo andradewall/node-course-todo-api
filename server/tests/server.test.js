@@ -39,22 +39,17 @@ describe('POST /todos', () => {
 			.post('/todos')
 			.send({})
 			.expect(400)
-			// .expect((res) => {
-			// 	expect(res.body.text).toBe(text);
-			// })
 			.end((err, res) => {
 				if (err) {
 					return done(err);
 				}
 
 				Todo.find().then((todos) => {
-
 					// Expect no doc
 					expect(todos.length).toBe(0);
 					done();
 				}).catch((e) => done(e));
 			});
 	});
-
 
 });
