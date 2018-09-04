@@ -4,7 +4,7 @@ let dbuser = 'admin';
 let dbpassword = 'admin1'
 
 let db = {
-   mlab: `mongodb://${dbuser}:${dbpassword}@ds245532.mlab.com:45532/todoapp`
+   mlab: `mongodb://${dbuser}:${dbpassword}@ds245532.mlab.com:45532/todoapp`,
    localhost: 'mongodb://localhost:27017/TodoApp'
 }
 
