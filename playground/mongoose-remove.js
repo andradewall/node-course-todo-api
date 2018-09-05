@@ -8,4 +8,4 @@ Todo.remove({}).then((res)={
    console.log(res);
 });
 
-Todo.findOneAndRemove()
+// Todo.findOneAndRemove()
