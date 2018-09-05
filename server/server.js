@@ -53,7 +53,7 @@ app.get('/todos/:id', (req, res) => {
 
 
 // Starting Express
-app.listen(3000, () => {
+app.listen((port || 3000), () => {
 	console.log(`Started up at port ${port}`);
 })
 
