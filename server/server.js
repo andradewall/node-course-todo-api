@@ -1,3 +1,5 @@
+require('./config/config');
+
 // Libraries import
 const _ = require('lodash');
 const express = require('express');
@@ -11,7 +13,7 @@ var {User} = require('./models/user');
 
 // Init Express creating a new var
 var app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 
 app.use(bodyParser.json());
 
