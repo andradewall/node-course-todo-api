@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
+const bcrypt = require('bcryptjs');
 
 var UserSchema = new mongoose.Schema({
 	email: {
@@ -67,6 +68,25 @@ UserSchema.statics.findByToken = function (token) {
 		'tokens.access': 'auth'
 	})
 };
+
+// Roda o código antes do evento informado ocorrer
+UserSchema.pre('save', function (next) {
+	var user = this;
+
+	if (user.isModified('password')) {
+		// user.password
+		bcrypt.genSalt(10, (err, salt) => {
+			bcrypt.hash(user.password, salt, (err, hash) => {
+				user.password = hash;
+				next();
+			});
+		});
+		// user.password = hash
+		// next();
+	} else {
+		next();
+	}
+});
 
 // Setting the fields. The first param from model() is the name of class and will be the name of the collection in plural
 var User = mongoose.model('User', UserSchema);
