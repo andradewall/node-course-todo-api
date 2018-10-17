@@ -1,5 +1,4 @@
 var env = process.env.NODE_ENV || 'development';
-console.log('env ******', env);
 
 let dbuser = 'admin';
 let dbpassword = 'admin1'
