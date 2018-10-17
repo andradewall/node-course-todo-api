@@ -52,6 +52,7 @@ UserSchema.methods.generateAuthToken = function () {
 	});
 };
 
+// Busca um user pelo token
 UserSchema.statics.findByToken = function (token) {
 	var User = this;
 	var decoded;
@@ -67,6 +68,28 @@ UserSchema.statics.findByToken = function (token) {
 		'tokens.token': token,
 		'tokens.access': 'auth'
 	})
+};
+
+UserSchema.statics.findByCredentials = function (email, password) {
+	var User = this;
+
+	return User.findOne({email}).then((user) => {
+		// se não houver email no bd
+		if (!user) {
+			// este retorno aciona o catch() no server.js
+			return Promise.reject();
+		}
+
+		return new Promise((resolve, reject) => {
+			bcrypt.compare(password, user.password, (err, result) => {
+				if (result) {
+					resolve(user);
+				} else {
+					reject();
+				}
+			});
+		});
+	});
 };
 
 // Roda o código antes do evento informado ocorrer

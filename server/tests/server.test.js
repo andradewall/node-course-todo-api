@@ -229,10 +229,6 @@ describe('POST /users', () => {
 	});
 
 	it('should return validation errors if request invalid', (done) => {
-		/* 
-			send invalid email and password
-			expect 400
-		*/
 		var email = 123456;
 		var password = '123';
 
@@ -244,10 +240,6 @@ describe('POST /users', () => {
 	});
 
 	it('should not create user if email in use', (done) => {
-		/*
-			email in use and valid password
-			expect 400
-		*/
 		var email = 'ana@email.com';
 		var password = '123456';
 
