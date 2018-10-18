@@ -9,9 +9,9 @@ if (env === 'development' || env === 'test') {
 	});
 }
 
-let dbuser = 'admin';
-let dbpassword = 'admin1'
+// let dbuser = 'admin';
+// let dbpassword = 'admin1'
 
-if (env === 'production') {
-   process.env.MONGODB_URI =  `mongodb://${dbuser}:${dbpassword}@ds245532.mlab.com:45532/todoapp`;
-}
+// if (env === 'production') {
+// 	process.env.MONGODB_URI =  `mongodb://${dbuser}:${dbpassword}@ds245532.mlab.com:45532/todoapp`;
+// }
