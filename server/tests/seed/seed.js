@@ -8,7 +8,6 @@ const userOneId = new ObjectID();
 const userTwoId = new ObjectID();
 
 // Array de 2 users que seedamos
-// Primeiro user tem auth token, o segundo não tem
 const users = [{
 	_id: userOneId,
 	email: 'pedro@email.com',
@@ -20,17 +19,23 @@ const users = [{
 }, {
 	_id: userTwoId,
 	email: 'ana@email.com',
-	password: 'ana123'
+	password: 'ana123',
+	tokens: [{
+		access: 'auth',
+		token: jwt.sign({_id: userTwoId, access: 'auth'}, 'abc123').toString()
+	}]
 }];
 
 const todos = [{
 	_id: new ObjectID(),
-	text: 'First test todo'
+	text: 'First test todo',
+	_creator: userOneId
 }, {
 	_id: new ObjectID(),
 	text: 'Second test todo',
 	completed: true,
-	completedAt: 333
+	completedAt: 333,
+	_creator: userTwoId
 }];
 
 beforeEach((done) => {
